@@ -1,25 +1,30 @@
-# CODING AGENTS: READ THIS FIRST
+# B2 Bookings site
 
-This is a **handoff bundle** from Claude Design (claude.ai/design).
+Static site. No build step.
 
-A user mocked up designs in HTML/CSS/JS using an AI design tool, then exported this bundle so a coding agent can implement the designs for real.
+## Files
+- `index.html` — the whole site (home / cold call / direct mail / about, hash-routed)
+- `support.js` — runtime that renders the page
+- `_ds/` — Industry design system stylesheet + bundle
+- `uploads/` — logo and photos
+- `.nojekyll` — required so GitHub Pages serves the `_ds` folder (Jekyll ignores underscore-prefixed dirs)
 
-## What you should do — IMPORTANT
+## Hosting on GitHub Pages
+1. Push this repo (contents already at the repo root).
+2. Settings -> Pages -> Source: "Deploy from a branch", branch `main`, folder `/ (root)`.
+3. Wait a minute, then open the URL Pages gives you.
 
-**Read the chat transcripts first.** There are 2 chat transcript(s) in `chats/`. The transcripts show the full back-and-forth between the user and the design assistant — they tell you **what the user actually wants** and **where they landed** after iterating. Don't skip them. The final HTML files are the output, but the chat is where the intent lives.
+Works the same on Netlify, Vercel, or Cloudflare Pages: drag the folder in, no build command, output directory = root.
 
-**Read `project/B2 Bookings Site.dc.html` in full.** The user had this file open when they triggered the handoff, so it's almost certainly the primary design they want built. Read it top to bottom — don't skim. Then **follow its imports**: open every file it pulls in (shared components, CSS, scripts) so you understand how the pieces fit together before you start implementing.
+## Notes
+- React and Babel load from unpkg.com at runtime, so the site needs internet access.
+- Routes are hash-based (`/#/cold-call`, `/#/direct-mail`, `/#/about`), so no server rewrite rules are needed.
 
-**If anything is ambiguous, ask the user to confirm before you start implementing.** It's much cheaper to clarify scope up front than to build the wrong thing.
+## Known placeholders still to fill in
+These are stubbed in the current design and need real content before launch — ask Claude Code to swap them in once you have the assets/copy:
+- **About page — Get in touch** (`index.html`, "Email" / "Phone" / "LinkedIn" rows): currently `[ your email ]`, `[ your number ]`, `[ profile ]`.
+- **Direct Mail page — proof section, send 01** ($150k/yr closed won): package-photo slot is an empty dashed box labeled `[ photo of the package that was sent ]`.
+- **Direct Mail page — proof section, send 02** (largest outbound deal): thank-you-email screenshot slot is an empty dashed box labeled `[ horizontal screenshot of their thank-you email ]`.
 
-## About the design files
-
-The design medium is **HTML/CSS/JS** — these are prototypes, not production code. Your job is to **recreate them pixel-perfectly** in whatever technology makes sense for the target codebase (React, Vue, native, whatever fits). Match the visual output; don't copy the prototype's internal structure unless it happens to fit.
-
-**Don't render these files in a browser or take screenshots unless the user asks you to.** Everything you need — dimensions, colors, layout rules — is spelled out in the source. Read the HTML and CSS directly; a screenshot won't tell you anything they don't.
-
-## Bundle contents
-
-- `README.md` — this file
-- `chats/` — conversation transcripts (read these!)
-- `project/` — the `Two service offerings overview` project files (HTML prototypes, assets, components)
+## Original design source
+The original Claude Design handoff bundle (chat transcripts, editable `.dc.html` source, and design-system files this export was generated from) is preserved under `project/` and `chats/` for reference.

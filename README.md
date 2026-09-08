@@ -20,9 +20,5 @@ Works the same on Netlify, Vercel, or Cloudflare Pages: drag the folder in, no b
 - React and Babel load from unpkg.com at runtime, so the site needs internet access.
 - Routes are hash-based (`/#/cold-call`, `/#/direct-mail`, `/#/about`), so no server rewrite rules are needed.
 
-## Known placeholders still to fill in
-These are stubbed in the current design and need real content before launch — ask Claude Code to swap them in once you have the assets/copy:
-- **Direct Mail page — proof section, send 01** ($150k/yr closed won): package-photo slot is an empty dashed box labeled `[ photo of the package that was sent ]`.
-
 ## Original design source
 The original Claude Design handoff bundle (chat transcripts, editable `.dc.html` source, and design-system files this export was generated from) is preserved under `project/` and `chats/` for reference.

@@ -23,7 +23,6 @@ Works the same on Netlify, Vercel, or Cloudflare Pages: drag the folder in, no b
 ## Known placeholders still to fill in
 These are stubbed in the current design and need real content before launch — ask Claude Code to swap them in once you have the assets/copy:
 - **Direct Mail page — proof section, send 01** ($150k/yr closed won): package-photo slot is an empty dashed box labeled `[ photo of the package that was sent ]`.
-- **Direct Mail page — proof section, send 02** (largest outbound deal): thank-you-email screenshot slot is an empty dashed box labeled `[ horizontal screenshot of their thank-you email ]`.
 
 ## Original design source
 The original Claude Design handoff bundle (chat transcripts, editable `.dc.html` source, and design-system files this export was generated from) is preserved under `project/` and `chats/` for reference.

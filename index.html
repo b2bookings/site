@@ -234,12 +234,18 @@ class Component extends DCLogic {
     if (c <= 600) return 100 - (c - 300) * 25 / 300;
     return 75;
   }
+  // Meeting-booking efficiency: flat 10% up to 600 convos/mo, then +2% per 100 convos beyond 600
+  // (2 extra meetings per 100 convos) as volume drives process efficiency.
+  meetingRate(c) {
+    if (c <= 600) return 0.10;
+    return 0.10 + (c - 600) / 100 * 0.02;
+  }
   calcVals() {
     const usd = n => '$' + Math.round(n).toLocaleString('en-US');
     const { convos, deal, close } = this.state;
     const rate = this.rate(convos);
     const fee = convos * rate;
-    const meetings = Math.round(convos * 0.10);
+    const meetings = Math.round(convos * this.meetingRate(convos));
     const wins = meetings * (close / 100);
     const revenue = wins * deal;
     const cac = wins > 0 ? fee / wins : 0;

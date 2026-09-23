@@ -23,6 +23,9 @@
     body { margin: 0; background: var(--paper); color: var(--ink); }
     a { color: var(--ink); text-decoration: none; }
     a:hover { color: var(--signal); text-decoration: underline; text-decoration-color: var(--signal); }
+    .chase-callout { transition: transform var(--dur-base) var(--ease-out); }
+    .chase-callout:hover { color: var(--paper); text-decoration: none; transform: rotate(0deg) scale(1.05); }
+    @media (prefers-reduced-motion: reduce) { .chase-callout:hover { transform: none; } }
   </style>
 </helmet>
 
@@ -44,7 +47,7 @@
           <x-import component-from-global-scope="B2BookingsDesignSystem_4e1b02.Button" variant="ghost" href="#proof" hint-size="140px,44px">See the proof</x-import>
         </div>
         <div style="margin-top: var(--space-12); padding-top: var(--space-6); border-top: 1px solid var(--border-hairline);">
-          <x-import component-from-global-scope="B2BookingsDesignSystem_4e1b02.Scorecard" label="Phone-sourced pipeline" stats="{{ heroStats }}" hint-size="100%,96px"></x-import>
+          <x-import component-from-global-scope="B2BookingsDesignSystem_4e1b02.Scorecard" label="The proof is in the numbers" stats="{{ heroStats }}" hint-size="100%,96px"></x-import>
         </div>
       </div>
       <figure style="margin: 0; display: flex; flex-direction: column; gap: var(--space-3);">
@@ -53,6 +56,12 @@
           <iframe src="https://www.youtube-nocookie.com/embed/ca962i59Nls?rel=0" title="Cold call featured testimonial" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0;" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen="true"></iframe>
         </div>
         <figcaption style="font-size: var(--text-caption); color: var(--rule-gray); text-transform: uppercase; letter-spacing: var(--tracking-label); font-weight: 600;">Cold call · Featured testimonial</figcaption>
+        <a href="{{ bookUrl }}" class="chase-callout" style="align-self: flex-end; margin-top: var(--space-3); width: 176px; height: 176px; flex: 0 0 auto; display: flex; align-items: center; justify-content: center; text-align: center; background: var(--signal); color: var(--paper); clip-path: polygon(50.0% 0.0%, 61.3% 19.0%, 82.1% 11.7%, 78.6% 33.5%, 99.2% 41.3%, 82.5% 55.7%, 93.3% 75.0%, 71.2% 75.3%, 67.1% 97.0%, 50.0% 83.0%, 32.9% 97.0%, 28.8% 75.3%, 6.7% 75.0%, 17.5% 55.7%, 0.8% 41.3%, 21.4% 33.5%, 17.9% 11.7%, 38.7% 19.0%); transform: rotate(-6deg); box-sizing: border-box; padding: 24px;">
+          <span style="display: flex; flex-direction: column; gap: var(--space-2);">
+            <span style="font-family: var(--font-display); font-weight: 700; font-size: 18px; line-height: 1.15;">See it for yourself!</span>
+            <span style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: var(--tracking-label); line-height: 1.35;">Have Chase cold call you</span>
+          </span>
+        </a>
       </figure>
     </div>
   </header>
@@ -63,9 +72,9 @@
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: var(--space-12); align-items: end; margin-bottom: var(--space-12);">
           <div>
             <x-import component-from-global-scope="B2BookingsDesignSystem_4e1b02.Label" style="margin-bottom: var(--space-4);" hint-size="100%,16px">The method</x-import>
-            <h2 style="font-size: var(--text-h1); max-width: 22ch; margin: 0;">Four stages, all of them visible to you</h2>
+            <h2 style="font-size: var(--text-h1); max-width: 22ch; margin: 0;">The 4 step execution process that you have complete visibility into.</h2>
           </div>
-          <p style="font-size: var(--text-body); max-width: 44ch; margin: 0;">Sales efficiency comes from who gets called, not how many calls happen. Each stage produces an artifact you can read.</p>
+          <p style="font-size: var(--text-body); max-width: 44ch; margin: 0;">We believe any SaaS product can be a fit for outbound. There's no better way to get live feedback from real prospects to truly understand your ICP. This 4 step process is how we have 300+ conversations with your buyers every month.</p>
         </div>
         <x-import component-from-global-scope="B2BookingsDesignSystem_4e1b02.ProcessSequence" steps="{{ steps }}" hint-size="100%,360px"></x-import>
       </div>
@@ -80,7 +89,7 @@
             <x-import component-from-global-scope="B2BookingsDesignSystem_4e1b02.Label" style="margin-bottom: var(--space-4);" hint-size="100%,16px">Unit economics</x-import>
             <h2 style="font-size: var(--text-h1); max-width: 22ch; margin: 0;">Run the math before you talk to us</h2>
           </div>
-          <p style="font-size: var(--text-body); max-width: 44ch; margin: 0;">Three inputs, no email gate. If the return does not clear 3x on the retainer, we will tell you that in the first call.</p>
+          <p style="font-size: var(--text-body); max-width: 44ch; margin: 0;">Optimized for a 3:1 (or greater) return on investment in year 1. Numbers assume 100 conversations = 1 full time BDR hire at $150k all in from recruiting costs to benefits.</p>
         </div>
         <x-import component-from-global-scope="B2BookingsDesignSystem_4e1b02.LedgerPanel" label="Unit economics" title="Run your own numbers" meta="{{ calc.meta }}" style="background: var(--paper);" hint-size="100%,520px">
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: var(--space-12); align-items: start;">
@@ -179,8 +188,7 @@
         </div>
       </div>
       <div style="margin-top: 96px;">
-        <x-import component-from-global-scope="B2BookingsDesignSystem_4e1b02.Label" style="margin-bottom: var(--space-3);" hint-size="100%,16px">Cold call · Prospect replies</x-import>
-        <h3 style="font-family: var(--font-sans); font-size: 20px; font-weight: 600; margin: 0 0 var(--space-6);">What they wrote back</h3>
+        <h3 style="font-family: var(--font-sans); font-size: 20px; font-weight: 600; margin: 0 0 var(--space-6);">What prospects said</h3>
         <div style="border-top: 1px solid var(--ink);">
           <sc-for list="{{ replies }}" as="q" hint-placeholder-count="3">
             <figure style="margin: 0; padding: var(--space-8) 0; border-bottom: 1px solid var(--border-hairline); display: flex; flex-wrap: wrap; gap: var(--space-4) var(--space-8); align-items: baseline;">
@@ -234,11 +242,11 @@ class Component extends DCLogic {
     if (c <= 600) return 100 - (c - 300) * 25 / 300;
     return 75;
   }
-  // Meeting-booking efficiency: flat 10% up to 600 convos/mo, then +2% per 100 convos beyond 600
-  // (2 extra meetings per 100 convos) as volume drives process efficiency.
+  // Meeting-booking efficiency: flat 10% up to 600 convos/mo, then +0.5% per 100 convos beyond 600
+  // (0.5 extra meetings per 100 convos) as volume drives process efficiency.
   meetingRate(c) {
     if (c <= 600) return 0.10;
-    return 0.10 + (c - 600) / 100 * 0.02;
+    return 0.10 + (c - 600) / 100 * 0.005;
   }
   calcVals() {
     const usd = n => '$' + Math.round(n).toLocaleString('en-US');
@@ -293,7 +301,7 @@ class Component extends DCLogic {
     };
   }
   trackRef = React.createRef();
-  BOOK = 'https://calendar.app.google/guHLMnYJKijZ5JNV8';
+  BOOK = 'https://calendar.app.google/mY8gwk6BgWCC7s9N9';
   results = [
     { client: 'WhoIsXML & Attaxion', industry: 'Cybersecurity', value: '$5M', unit: 'Pipeline', detail: '150 booked meetings, 100+ demos.', time: '9 months' },
     { client: 'Micro Estimating Systems', industry: 'B2B SaaS', value: '$2M', unit: 'Pipeline', detail: '64 demos, 22 discovery calls, 58 proposals.', time: '4 months' },
@@ -325,16 +333,16 @@ class Component extends DCLogic {
       go: label => { this.setState({ active: label }); const el = document.getElementById(ids[label]); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' }); },
       navAction: ns ? React.createElement(ns.Button, { size: 'sm', href: this.BOOK }, 'Book a call') : null,
       heroStats: [
-        { value: '$5M', label: 'Cybersecurity · 9 mo', tone: 'green' },
-        { value: '$2M', label: 'B2B SaaS · 4 mo' },
-        { value: '$1M+', label: 'Machinery · 21 wk' },
+        { value: '$400K', label: 'Marketing SaaS · Closed won revenue, 5 mo', tone: 'green' },
+        { value: '150+', label: 'Cybersecurity · Meetings booked' },
+        { value: '$2M', label: 'B2B SaaS · Qualified pipeline sourced' },
       ],
       showMethod, showCalculator,
       steps: [
-        { title: 'List Build', label: 'Week 1', body: 'Named accounts only. Titles, triggers and disqualifiers agreed before a single dial. No scraped lists, no spray.' },
-        { title: 'The Call', label: 'Week 2', body: 'Phone first. Every conversation recorded, scored against the ICP definition and attached to the account record.' },
-        { title: 'The Objection Log', label: 'Ongoing', body: 'Objections logged verbatim, grouped weekly, fed back into the script. You see the log, not a summary of it.' },
-        { title: 'The Booked Meeting', label: 'Week 3 on', body: '15+ qualified opportunities a month, handed to your AEs with the call notes and the recording attached.' },
+        { title: 'List Build', body: 'A+ ICP fit accounts and prospects only. You provide the ICP criteria and we confirm on the kickoff call.' },
+        { title: 'Rep Selection & Training', body: "Reps are selected based on industry-specific business development experience. Our reps have an average of 4.5 years SaaS business development experience, so training is on your specific offering - they've already mastered the fundamentals." },
+        { title: 'The Conversation Log', body: 'Every conversation had with your prospects produces a searchable transcript and call recording that you then own. Over time, we build a comprehensive ICP map complete with regional and competitor specific insights.' },
+        { title: 'Booking Meetings', body: "What you're here for and the sole reason we exist. We're not a marketing agency, we're not a lead gen service. Booked meetings is the metric of success and what we're optimized for." },
       ],
       calc: this.calcVals(),
       results: this.results,

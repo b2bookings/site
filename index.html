@@ -23,6 +23,30 @@
     body { margin: 0; background: var(--paper); color: var(--ink); }
     a { color: var(--ink); text-decoration: none; }
     a:hover { color: var(--signal); text-decoration: underline; text-decoration-color: var(--signal); }
+
+    /* Mobile: the design system's own page-margin-sm token is meant to swap in here
+       (see tokens/spacing.css), but this page sets padding straight from --page-margin
+       instead of the .ds-container class, so make the swap global. */
+    @media (max-width: 900px) {
+      :root { --page-margin: var(--page-margin-sm); }
+    }
+    /* Nav: text links + a button in one unwrapped flex row overflow on narrow screens. */
+    .b2-nav-shell > nav > div { flex-wrap: wrap; row-gap: var(--space-3); }
+    .b2-nav-shell > nav > div > div { flex-wrap: wrap; row-gap: var(--space-3); }
+    /* Hero scorecard: fixed 3-column grid (baked into the component) is too tight below ~560px. */
+    @media (max-width: 560px) {
+      .b2-hero-stats [style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+      .b2-hero-stats [style*="grid-template-columns"] > div { border-left: 0 !important; padding: var(--space-4) 0 !important; border-top: 1px solid var(--border-hairline); }
+      .b2-hero-stats [style*="grid-template-columns"] > div:first-child { border-top: 0; padding-top: 0 !important; }
+    }
+    /* Method steps: fixed two-column layout (label list + detail panel) is cramped below ~640px. */
+    @media (max-width: 640px) {
+      .b2-process-grid > div { grid-template-columns: 1fr !important; }
+    }
+    /* Calculator panel header: title + "Retainer $X / mo" meta (nowrap) can overflow a narrow header row. */
+    @media (max-width: 480px) {
+      .b2-calc-panel header { flex-wrap: wrap; row-gap: var(--space-2); }
+    }
     .b2-sticker-slot { display: flex; justify-content: center; align-items: center; margin-top: 48px; }
     .b2-sticker {
       position: relative; display: block; width: 320px; height: 260px; border: 0; text-decoration: none;
@@ -50,7 +74,7 @@
 
 <div style="background: var(--paper); color: var(--ink); font-family: var(--font-sans); min-height: 100vh;">
 
-  <div style="position: sticky; top: 0; z-index: 20;">
+  <div class="b2-nav-shell" style="position: sticky; top: 0; z-index: 20;">
     <x-import component-from-global-scope="B2BookingsDesignSystem_4e1b02.Nav" items="{{ navItems }}" active="{{ activeNav }}" on-navigate="{{ go }}" action="{{ navAction }}" hint-size="100%,64px"></x-import>
   </div>
 
@@ -65,7 +89,7 @@
           <x-import component-from-global-scope="B2BookingsDesignSystem_4e1b02.Button" variant="signal" size="lg" href="{{ bookUrl }}" hint-size="220px,52px">Book a call</x-import>
           <x-import component-from-global-scope="B2BookingsDesignSystem_4e1b02.Button" variant="ghost" href="#proof" hint-size="140px,44px">See the proof</x-import>
         </div>
-        <div style="margin-top: var(--space-12); padding-top: var(--space-6); border-top: 1px solid var(--border-hairline);">
+        <div class="b2-hero-stats" style="margin-top: var(--space-12); padding-top: var(--space-6); border-top: 1px solid var(--border-hairline);">
           <x-import component-from-global-scope="B2BookingsDesignSystem_4e1b02.Scorecard" label="The proof is in the numbers" stats="{{ heroStats }}" hint-size="100%,96px"></x-import>
         </div>
       </div>
@@ -101,7 +125,9 @@
           </div>
           <p style="font-size: var(--text-body); max-width: 44ch; margin: 0;">We believe any SaaS product can be a fit for outbound. There's no better way to get live feedback from real prospects to truly understand your ICP. This 4 step process is how we have 300+ conversations with your buyers every month.</p>
         </div>
-        <x-import component-from-global-scope="B2BookingsDesignSystem_4e1b02.ProcessSequence" steps="{{ steps }}" hint-size="100%,360px"></x-import>
+        <div class="b2-process-grid">
+          <x-import component-from-global-scope="B2BookingsDesignSystem_4e1b02.ProcessSequence" steps="{{ steps }}" hint-size="100%,360px"></x-import>
+        </div>
       </div>
     </section>
   </sc-if>
@@ -116,6 +142,7 @@
           </div>
           <p style="font-size: var(--text-body); max-width: 44ch; margin: 0;">Optimized for a 3:1 (or greater) return on investment in year 1. Numbers assume 100 conversations = 1 full time BDR hire at $150k all in from recruiting costs to benefits.</p>
         </div>
+        <div class="b2-calc-panel">
         <x-import component-from-global-scope="B2BookingsDesignSystem_4e1b02.LedgerPanel" label="Unit economics" title="Run your own numbers" meta="{{ calc.meta }}" style="background: var(--paper);" hint-size="100%,520px">
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: var(--space-12); align-items: start;">
             <div style="display: flex; flex-direction: column; gap: var(--space-8);">
@@ -157,6 +184,7 @@
             </div>
           </div>
         </x-import>
+        </div>
       </div>
     </section>
   </sc-if>

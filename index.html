@@ -23,9 +23,28 @@
     body { margin: 0; background: var(--paper); color: var(--ink); }
     a { color: var(--ink); text-decoration: none; }
     a:hover { color: var(--signal); text-decoration: underline; text-decoration-color: var(--signal); }
-    .chase-callout { transition: transform var(--dur-base) var(--ease-out); }
-    .chase-callout:hover { color: var(--paper); text-decoration: none; transform: rotate(0deg) scale(1.05); }
-    @media (prefers-reduced-motion: reduce) { .chase-callout:hover { transform: none; } }
+    .b2-sticker-slot { display: flex; justify-content: center; align-items: center; margin-top: 48px; }
+    .b2-sticker {
+      position: relative; display: block; width: 320px; height: 260px; border: 0; text-decoration: none;
+      transform: rotate(-9deg); transition: transform 180ms cubic-bezier(.22,.61,.36,1);
+    }
+    .b2-sticker:hover, .b2-sticker:focus-visible { transform: rotate(-5deg) translate(-2px,-3px); text-decoration: none; border: 0; }
+    .b2-sticker:active { transform: rotate(-5deg) translate(4px,5px); }
+    .b2-sticker svg { position: absolute; inset: 0; overflow: visible; }
+    .b2-sticker__text {
+      position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 10px; text-align: center; color: #EFF1F2; padding-bottom: 6px;
+    }
+    .b2-sticker__head {
+      font-family: var(--font-display, "Fraunces", Georgia, serif); font-weight: 700;
+      font-size: 30px; line-height: 1; letter-spacing: -0.01em; max-width: 7.5em;
+    }
+    .b2-sticker__tag {
+      font-family: var(--font-sans, "Inter", system-ui, sans-serif); font-weight: 700; font-size: 12px;
+      line-height: 1.35; letter-spacing: 0.12em; max-width: 14em;
+    }
+    @media (max-width: 720px) { .b2-sticker-slot { margin-top: 24px; } .b2-sticker { zoom: 0.8; } }
+    @media (prefers-reduced-motion: reduce) { .b2-sticker { transition: none; } }
   </style>
 </helmet>
 
@@ -56,12 +75,18 @@
           <iframe src="https://www.youtube-nocookie.com/embed/ca962i59Nls?rel=0" title="Cold call featured testimonial" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0;" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen="true"></iframe>
         </div>
         <figcaption style="font-size: var(--text-caption); color: var(--rule-gray); text-transform: uppercase; letter-spacing: var(--tracking-label); font-weight: 600;">Cold call · Featured testimonial</figcaption>
-        <a href="{{ bookUrl }}" class="chase-callout" style="align-self: flex-end; margin-top: var(--space-3); width: 176px; height: 176px; flex: 0 0 auto; display: flex; align-items: center; justify-content: center; text-align: center; background: var(--signal); color: var(--paper); clip-path: polygon(50.0% 0.0%, 61.3% 19.0%, 82.1% 11.7%, 78.6% 33.5%, 99.2% 41.3%, 82.5% 55.7%, 93.3% 75.0%, 71.2% 75.3%, 67.1% 97.0%, 50.0% 83.0%, 32.9% 97.0%, 28.8% 75.3%, 6.7% 75.0%, 17.5% 55.7%, 0.8% 41.3%, 21.4% 33.5%, 17.9% 11.7%, 38.7% 19.0%); transform: rotate(-6deg); box-sizing: border-box; padding: 24px;">
-          <span style="display: flex; flex-direction: column; gap: var(--space-2);">
-            <span style="font-family: var(--font-display); font-weight: 700; font-size: 18px; line-height: 1.15;">See it for yourself!</span>
-            <span style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: var(--tracking-label); line-height: 1.35;">Have Chase cold call you</span>
-          </span>
-        </a>
+        <div class="b2-sticker-slot">
+          <a class="b2-sticker" href="{{ bookUrl }}" target="_blank" rel="noopener" aria-label="See it for yourself! Have Chase cold call you">
+            <svg viewBox="0 0 320 260" width="320" height="260" aria-hidden="true">
+              <polygon transform="translate(7,8)" fill="#14181C" stroke="#14181C" stroke-width="12" stroke-linejoin="round" points="159.8,6.4 178.2,52.2 226.1,21.4 227.1,58.9 277.0,63.1 257.4,96.2 289.9,118.7 252.7,139.5 283.5,172.2 240.9,178.1 249.7,209.4 205.7,214.2 200.3,245.6 155.0,208.1 126.5,250.0 114.4,200.0 59.1,234.5 83.6,175.3 30.1,171.0 56.3,144.4 21.5,117.9 56.8,101.8 28.8,58.3 97.8,71.0 96.1,23.6 138.6,45.1"></polygon>
+              <polygon fill="#9B2226" stroke="#EFF1F2" stroke-width="12" stroke-linejoin="round" points="159.8,6.4 178.2,52.2 226.1,21.4 227.1,58.9 277.0,63.1 257.4,96.2 289.9,118.7 252.7,139.5 283.5,172.2 240.9,178.1 249.7,209.4 205.7,214.2 200.3,245.6 155.0,208.1 126.5,250.0 114.4,200.0 59.1,234.5 83.6,175.3 30.1,171.0 56.3,144.4 21.5,117.9 56.8,101.8 28.8,58.3 97.8,71.0 96.1,23.6 138.6,45.1"></polygon>
+            </svg>
+            <span class="b2-sticker__text">
+              <span class="b2-sticker__head">See it for yourself!</span>
+              <span class="b2-sticker__tag">HAVE CHASE COLD CALL YOU</span>
+            </span>
+          </a>
+        </div>
       </figure>
     </div>
   </header>

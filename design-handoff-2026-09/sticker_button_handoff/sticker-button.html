@@ -1,0 +1,41 @@
+<!-- B2 Bookings · Sticker CTA (option 1a "Die-cut")
+     Self-contained: markup + scoped CSS. Paste the <style> once (or move to your stylesheet),
+     then place the <div class="b2-sticker-slot"> where the README says. -->
+<style>
+  .b2-sticker-slot { display: flex; justify-content: center; align-items: center; margin-top: 48px; }
+  .b2-sticker {
+    position: relative; display: block; width: 320px; height: 260px; border: 0; text-decoration: none;
+    transform: rotate(-9deg); transition: transform 180ms cubic-bezier(.22,.61,.36,1);
+  }
+  .b2-sticker:hover, .b2-sticker:focus-visible { transform: rotate(-5deg) translate(-2px,-3px); text-decoration: none; border: 0; }
+  .b2-sticker:active { transform: rotate(-5deg) translate(4px,5px); }
+  .b2-sticker svg { position: absolute; inset: 0; overflow: visible; }
+  .b2-sticker__text {
+    position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 10px; text-align: center; color: #EFF1F2; padding-bottom: 6px;
+  }
+  .b2-sticker__head {
+    font-family: var(--font-display, "Fraunces", Georgia, serif); font-weight: 700;
+    font-size: 30px; line-height: 1; letter-spacing: -0.01em; max-width: 7.5em;
+  }
+  .b2-sticker__tag {
+    font-family: var(--font-sans, "Inter", system-ui, sans-serif); font-weight: 700; font-size: 12px;
+    line-height: 1.35; letter-spacing: 0.12em; max-width: 14em;
+  }
+  @media (max-width: 720px) { .b2-sticker-slot { margin-top: 24px; } .b2-sticker { zoom: 0.8; } }
+  @media (prefers-reduced-motion: reduce) { .b2-sticker { transition: none; } }
+</style>
+
+<div class="b2-sticker-slot">
+  <a class="b2-sticker" href="https://calendar.app.google/guHLMnYJKijZ5JNV8" target="_blank" rel="noopener"
+     aria-label="See it for yourself! Have Chase cold call you">
+    <svg viewBox="0 0 320 260" width="320" height="260" aria-hidden="true">
+      <polygon transform="translate(7,8)" fill="#14181C" stroke="#14181C" stroke-width="12" stroke-linejoin="round" points="159.8,6.4 178.2,52.2 226.1,21.4 227.1,58.9 277.0,63.1 257.4,96.2 289.9,118.7 252.7,139.5 283.5,172.2 240.9,178.1 249.7,209.4 205.7,214.2 200.3,245.6 155.0,208.1 126.5,250.0 114.4,200.0 59.1,234.5 83.6,175.3 30.1,171.0 56.3,144.4 21.5,117.9 56.8,101.8 28.8,58.3 97.8,71.0 96.1,23.6 138.6,45.1"></polygon>
+      <polygon fill="#9B2226" stroke="#EFF1F2" stroke-width="12" stroke-linejoin="round" points="159.8,6.4 178.2,52.2 226.1,21.4 227.1,58.9 277.0,63.1 257.4,96.2 289.9,118.7 252.7,139.5 283.5,172.2 240.9,178.1 249.7,209.4 205.7,214.2 200.3,245.6 155.0,208.1 126.5,250.0 114.4,200.0 59.1,234.5 83.6,175.3 30.1,171.0 56.3,144.4 21.5,117.9 56.8,101.8 28.8,58.3 97.8,71.0 96.1,23.6 138.6,45.1"></polygon>
+    </svg>
+    <span class="b2-sticker__text">
+      <span class="b2-sticker__head">See it for yourself!</span>
+      <span class="b2-sticker__tag">HAVE CHASE COLD CALL YOU</span>
+    </span>
+  </a>
+</div>

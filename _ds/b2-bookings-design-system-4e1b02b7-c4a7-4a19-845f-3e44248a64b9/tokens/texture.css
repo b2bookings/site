@@ -1,0 +1,9 @@
+:root{
+--texture-opacity:.035; /* @kind other */
+--halftone-size:6px;
+--halftone-dot:1.1px;
+}
+/* Halftone dot field, Ink on Paper, background use only. */
+.ds-halftone{background-image:radial-gradient(var(--ink) var(--halftone-dot),transparent var(--halftone-dot));background-size:var(--halftone-size) var(--halftone-size);opacity:var(--texture-opacity)}
+.ds-halftone-field{position:relative;isolation:isolate}
+.ds-halftone-field::before{content:"";position:absolute;inset:0;z-index:-1;background-image:radial-gradient(var(--ink) var(--halftone-dot),transparent var(--halftone-dot));background-size:var(--halftone-size) var(--halftone-size);opacity:var(--texture-opacity);pointer-events:none}

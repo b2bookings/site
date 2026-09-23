@@ -1,0 +1,16 @@
+:root{
+--dur-fast:150ms; /* @kind other */
+--dur-base:200ms; /* @kind other */
+--dur-slow:250ms; /* @kind other */
+--ease-out:cubic-bezier(.22,.61,.36,1); /* @kind other */
+--ease-in-out:cubic-bezier(.4,.2,.2,1); /* @kind other */
+--reveal-offset:16px;
+}
+@media(prefers-reduced-motion:reduce){:root{--dur-fast:0ms; /* @kind other */
+--dur-base:0ms; /* @kind other */
+--dur-slow:0ms; /* @kind other */
+--reveal-offset:0px}}
+
+/* scroll reveal: fade plus upward slide. no bounce, no spring, no parallax. */
+.ds-reveal{opacity:0;transform:translateY(var(--reveal-offset));transition:opacity var(--dur-slow) var(--ease-out),transform var(--dur-slow) var(--ease-out)}
+.ds-reveal.is-in{opacity:1;transform:none}

@@ -1,0 +1,68 @@
+:root{
+/* base palette - six colors, no more */
+--ink:#14181C;
+--paper:#EFF1F2;
+--paper-deep:#E2E6E8;
+--ledger-green:#1F3D2B;
+--signal:#9B2226;
+--rule-gray:#8A8478;
+
+/* tints, derived only for hairlines and hover washes. never as fills of their own */
+--ink-12:rgba(20,24,28,.12);
+--ink-08:rgba(20,24,28,.08);
+--ink-04:rgba(20,24,28,.04);
+--rule-40:rgba(138,132,120,.4);
+--signal-12:rgba(155,34,38,.12);
+
+/* semantic - text */
+--text-primary:var(--ink);
+--text-secondary:var(--ledger-green);
+--text-muted:var(--rule-gray);
+--text-inverse:var(--paper);
+--text-accent:var(--signal);
+--text-link:var(--ink);
+--text-link-hover:var(--signal);
+
+/* semantic - surface */
+--surface-page:var(--paper);
+--surface-raised:var(--paper-deep);
+--surface-card:var(--paper-deep);
+--surface-panel:var(--paper-deep);
+--surface-inverse:var(--ink);
+--surface-accent:var(--signal);
+
+/* semantic - line */
+--border-hairline:var(--rule-40);
+--border-strong:var(--ink);
+--border-accent:var(--signal);
+--divider:var(--rule-40);
+
+/* semantic - control */
+--control-bg:var(--ink);
+--control-fg:var(--paper);
+--control-bg-hover:var(--signal);
+--control-track:var(--ink-12);
+--control-fill:var(--ledger-green);
+
+/* data visualization - two series colors, one axis color */
+--data-1:var(--ledger-green);
+--data-2:var(--signal);
+--data-axis:var(--ink);
+--data-grid:var(--rule-40);
+}
+
+/* Reverse context: dark is the exception, not a parallel default.
+   Apply .on-ink to a section to flip text and line colors. */
+.on-ink{
+--text-primary:var(--paper);
+--text-secondary:var(--paper-deep);
+--text-muted:var(--rule-gray);
+--surface-page:var(--ink);
+--surface-card:#1B2025;
+--border-hairline:rgba(247,245,240,.22);
+--divider:rgba(247,245,240,.22);
+--control-bg:var(--paper);
+--control-fg:var(--ink);
+background:var(--ink);
+color:var(--paper);
+}

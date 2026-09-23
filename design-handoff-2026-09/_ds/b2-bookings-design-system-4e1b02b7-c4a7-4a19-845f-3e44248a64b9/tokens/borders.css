@@ -1,0 +1,14 @@
+:root{
+--hairline:1px;
+--rule-weight:1px;
+--rule-weight-strong:2px;
+--radius-none:0px;
+--radius-xs:2px;
+--radius-sm:3px;
+--radius-md:4px;
+--stroke-icon:1.75px;
+/* the only "shadow" in the system is a hairline. there are no drop shadows. */
+--shadow-none:none;
+--shadow-hairline:0 0 0 1px var(--border-hairline);
+}
+.ds-rule{border:0;border-top:var(--rule-weight) solid var(--divider);margin:0}

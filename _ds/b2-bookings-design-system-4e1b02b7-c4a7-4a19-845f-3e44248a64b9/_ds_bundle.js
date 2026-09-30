@@ -49,7 +49,7 @@ function Badge({
   style,
   ...rest
 }) {
-  const c = tone === 'signal' ? 'var(--signal)' : tone === 'green' ? 'var(--ledger-green)' : tone === 'muted' ? 'var(--rule-gray)' : 'var(--ink)';
+  const c = tone === 'signal' ? 'var(--signal-deep)' : tone === 'green' ? 'var(--ledger-green)' : tone === 'muted' ? 'var(--rule-gray)' : 'var(--ink)';
   const solid = variant === 'solid';
   return /*#__PURE__*/React.createElement("span", _extends({
     style: {
@@ -117,20 +117,20 @@ function Button({
   const skins = {
     primary: {
       background: hover && !disabled ? 'var(--signal)' : 'var(--ink)',
-      color: 'var(--paper)'
+      color: hover && !disabled ? '#FFFFFF' : 'var(--paper)'
     },
     secondary: {
       background: 'transparent',
-      color: hover && !disabled ? 'var(--signal)' : 'var(--ink)',
+      color: hover && !disabled ? 'var(--signal-deep)' : 'var(--ink)',
       borderColor: hover && !disabled ? 'var(--signal)' : 'var(--ink)'
     },
     signal: {
       background: hover && !disabled ? 'var(--ink)' : 'var(--signal)',
-      color: 'var(--paper)'
+      color: hover && !disabled ? 'var(--paper)' : '#FFFFFF'
     },
     ghost: {
       background: 'transparent',
-      color: hover && !disabled ? 'var(--signal)' : 'var(--ink)',
+      color: hover && !disabled ? 'var(--signal-deep)' : 'var(--ink)',
       padding: size === 'sm' ? '6px 0' : '8px 0',
       borderBottom: '1px solid ' + (hover && !disabled ? 'var(--signal)' : 'var(--rule-40)'),
       borderRadius: 0
@@ -178,7 +178,7 @@ function IconButton({
       alignItems: 'center',
       justifyContent: 'center',
       background: variant === 'filled' ? hover ? 'var(--signal)' : 'var(--ink)' : 'transparent',
-      color: variant === 'filled' ? 'var(--paper)' : hover ? 'var(--signal)' : 'var(--ink)',
+      color: variant === 'filled' ? hover ? '#FFFFFF' : 'var(--paper)' : hover ? 'var(--signal-deep)' : 'var(--ink)',
       border: variant === 'outline' ? '1px solid ' + (hover ? 'var(--signal)' : 'var(--rule-40)') : '1px solid transparent',
       borderRadius: 'var(--radius-sm)',
       cursor: 'pointer',
@@ -204,7 +204,7 @@ function Label({
   ...rest
 }) {
   const Tag = as;
-  const color = tone === 'ink' ? 'var(--ink)' : tone === 'signal' ? 'var(--signal)' : tone === 'green' ? 'var(--ledger-green)' : 'var(--rule-gray)';
+  const color = tone === 'ink' ? 'var(--ink)' : tone === 'signal' ? 'var(--signal-deep)' : tone === 'green' ? 'var(--ledger-green)' : 'var(--rule-gray)';
   return /*#__PURE__*/React.createElement(Tag, _extends({
     style: {
       fontFamily: 'var(--font-sans)',
@@ -698,7 +698,7 @@ function Dialog({
     style: {
       position: 'fixed',
       inset: 0,
-      background: 'rgba(20,24,28,.6)',
+      background: 'rgba(17,19,18,.6)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -1024,7 +1024,7 @@ function Input({
   }, shared)), (hint || error) && /*#__PURE__*/React.createElement("span", {
     style: {
       fontSize: 'var(--text-caption)',
-      color: error ? 'var(--signal)' : 'var(--rule-gray)'
+      color: error ? 'var(--signal-deep)' : 'var(--rule-gray)'
     }
   }, error || hint));
 }
@@ -1776,7 +1776,7 @@ function Nav({
         textTransform: 'uppercase',
         letterSpacing: 'var(--tracking-label)',
         textDecoration: 'none',
-        color: on ? 'var(--signal)' : 'var(--ink)',
+        color: on ? 'var(--signal-deep)' : 'var(--ink)',
         paddingBottom: 2,
         borderBottom: '1px solid ' + (active === label ? 'var(--ink)' : hover === label ? 'var(--signal)' : 'transparent'),
         transition: 'color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out)'
@@ -1838,7 +1838,7 @@ function Tabs({
         fontWeight: 'var(--weight-semibold)',
         textTransform: 'uppercase',
         letterSpacing: 'var(--tracking-label)',
-        color: on ? 'var(--ink)' : hover === v ? 'var(--signal)' : 'var(--rule-gray)',
+        color: on ? 'var(--ink)' : hover === v ? 'var(--signal-deep)' : 'var(--rule-gray)',
         transition: 'color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out)'
       }
     }, l);

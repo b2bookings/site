@@ -291,7 +291,7 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;showMethod&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showCalculator&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;}}">
 class Component extends DCLogic {
   state = { active: 'Proof', idx: 0, convos: 300, deal: 24000, close: 22 };
-  // Rate per conversation: $125 at 200, $100 at 300, $75 at 600+, interpolated between tiers.
+  // Rate per conversation: $125 from 100 up to 200, $100 at 300, $75 at 600+, interpolated between tiers.
   rate(c) {
     if (c <= 200) return 125;
     if (c <= 300) return 125 - (c - 200) * 25 / 100;
@@ -319,7 +319,7 @@ class Component extends DCLogic {
     const max = 1500 * 150;
     return {
       convos, deal, close,
-      cMin: 200, cMax: 1500, cStep: 50, dMin: 5000, dMax: 150000, dStep: 1000, rMin: 5, rMax: 50, rStep: 1,
+      cMin: 100, cMax: 1500, cStep: 50, dMin: 5000, dMax: 150000, dStep: 1000, rMin: 5, rMax: 50, rStep: 1,
       setConvos: v => this.setState({ convos: v }),
       setDeal: v => this.setState({ deal: v }),
       setClose: v => this.setState({ close: v }),

@@ -298,11 +298,19 @@ class Component extends DCLogic {
     if (c <= 600) return 100 - (c - 300) * 25 / 300;
     return 75;
   }
-  // Meeting-booking efficiency: flat 10% up to 600 convos/mo, then +0.5% per 100 convos beyond 600
+  // Meeting-booking efficiency: 9% at 100 convos/mo rising to 10% at 300 (less call data to refine
+  // the ICP and talk tracks at low volume), flat 10% to 600, then +0.5% per 100 convos beyond 600
   // (0.5 extra meetings per 100 convos) as volume drives process efficiency.
   meetingRate(c) {
+    if (c < 300) return 0.09 + (c - 100) * 0.01 / 200;
     if (c <= 600) return 0.10;
     return 0.10 + (c - 600) / 100 * 0.005;
+  }
+  // In-house cost per conversation: $150 at 300+ convos/mo, rising to $175 at 100, since tools,
+  // processes and ramp-up for a new outbound function are spread over fewer conversations.
+  inRate(c) {
+    if (c < 300) return 150 + (300 - c) * 25 / 200;
+    return 150;
   }
   calcVals() {
     const usd = n => '$' + Math.round(n).toLocaleString('en-US');
@@ -315,7 +323,8 @@ class Component extends DCLogic {
     const cac = wins > 0 ? fee / wins : 0;
     const ratio = fee > 0 ? revenue / fee : 0;
     const works = ratio >= 3;
-    const inCost = convos * 150;
+    const inRate = this.inRate(convos);
+    const inCost = convos * inRate;
     const max = 1500 * 150;
     return {
       convos, deal, close,
@@ -350,7 +359,7 @@ class Component extends DCLogic {
       ],
       cmpRows: [
         { k: 'Total cost', a: usd(inCost), b: usd(fee), d: usd(inCost - fee) },
-        { k: 'Cost per conversation', a: '$150', b: usd(rate), d: usd(150 - rate) },
+        { k: 'Cost per conversation', a: usd(inRate), b: usd(rate), d: usd(inRate - rate) },
         { k: 'Cost per meeting', a: usd(meetings ? inCost / meetings : 0), b: usd(meetings ? fee / meetings : 0), d: usd(meetings ? (inCost - fee) / meetings : 0) },
         { k: 'Saved over 12 months', a: '', b: '', d: usd((inCost - fee) * 12) },
       ],

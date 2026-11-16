@@ -1,0 +1,14 @@
+{
+  "v": 1,
+  "publicKey": "BLB/ycr/tcG1xq8BG5eMEO6wEJD9F+uTTzRCx35eF+JtqEnNAY4ctv31kG7CDGse0nuCsWWy79s7b5byGD2Bh5I=",
+  "kdf": {
+    "name": "PBKDF2",
+    "hash": "SHA-256",
+    "iterations": 600000,
+    "salt": "qadVCwjJRzkVXs6gz+K5NQ=="
+  },
+  "privateKey": {
+    "iv": "h7dgePj4OZpSoP5r",
+    "ct": "VwJ/DLeucYM1u4o4hKOXG18ElEpp2YvtIP6M4dlxu/Wb90hYbZXNCbrKDzBbvrvMw1mMRfoxFF4sK5ESVRYKeeKxsnJaBzZj/G9Iblj017JfHRwvFNC4RbU7g3sgVyiRj26hru3px/CenKxl8Pod31hCyeksKZrwZjiHExtxN7XrMgF7gI87TawL3p6nKfw1caVFUvKM5oaLcQ=="
+  }
+}

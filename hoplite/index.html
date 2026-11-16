@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Hoplite Consulting · Outreach portal</title>
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/_ds/b2-bookings-design-system-4e1b02b7-c4a7-4a19-845f-3e44248a64b9/tokens/fonts.css">
+<link rel="stylesheet" href="/_ds/b2-bookings-design-system-4e1b02b7-c4a7-4a19-845f-3e44248a64b9/tokens/colors.css">
+<link rel="stylesheet" href="/_ds/b2-bookings-design-system-4e1b02b7-c4a7-4a19-845f-3e44248a64b9/tokens/typography.css">
+<link rel="stylesheet" href="/_ds/b2-bookings-design-system-4e1b02b7-c4a7-4a19-845f-3e44248a64b9/tokens/spacing.css">
+<link rel="stylesheet" href="/_ds/b2-bookings-design-system-4e1b02b7-c4a7-4a19-845f-3e44248a64b9/tokens/borders.css">
+<link rel="stylesheet" href="/portal/portal.css">
+</head>
+<body>
+<header class="bar"><div class="in">
+  <a class="wordmark" href="/">B2 Bookings</a>
+  <button type="button" class="linkbtn" id="signout" hidden>Sign out</button>
+</div></header>
+
+<main class="gate" id="gate" hidden>
+  <form id="gateForm">
+    <span class="label">Client portal</span>
+    <h1>Hoplite Consulting</h1>
+    <p>Enter the password B2 Bookings gave you to see your outreach numbers.</p>
+    <div class="field">
+      <label for="pw">Password</label>
+      <input type="password" id="pw" autocomplete="current-password" required>
+    </div>
+    <label class="check"><input type="checkbox" id="remember"> Keep me signed in on this device</label>
+    <button type="submit" class="btn">View portal</button>
+    <p class="err" id="err" role="alert"></p>
+  </form>
+</main>
+
+<main class="wrap" id="report" hidden>
+  <header class="top">
+    <div>
+      <span class="label" id="client">Hoplite Consulting · Outbound program</span>
+      <h1>Cold calling results</h1>
+      <p class="sub" id="program"></p>
+    </div>
+    <div class="status"><span class="dot"></span><span id="updated">Loading…</span></div>
+  </header>
+
+  <nav class="seg" id="range" aria-label="Date range"></nav>
+
+  <section class="kpis" id="kpis" aria-label="Key numbers"></section>
+
+  <div class="grid2">
+    <section class="panel">
+      <h2>Week over week</h2>
+      <div class="scroll"><table id="weekTable"></table></div>
+      <p class="note">Weeks run Monday to Sunday, Eastern time.</p>
+    </section>
+    <section class="panel">
+      <h2>Dials by day</h2>
+      <div class="rel" id="dailyChart"></div>
+    </section>
+  </div>
+
+  <section class="panel">
+    <h2>What happened on each conversation</h2>
+    <div class="rel" id="outChart"></div>
+  </section>
+
+  <section class="panel">
+    <div class="logbar">
+      <h2 id="logTitle">Conversations</h2>
+      <div class="seg" aria-label="Filter conversations">
+        <button type="button" id="fAll" aria-pressed="true">All</button>
+        <button type="button" id="fQual" aria-pressed="false">Qualified only</button>
+        <input type="search" id="q" placeholder="Search name, company, title" aria-label="Search conversations">
+      </div>
+    </div>
+    <div class="scroll"><table id="logTable"></table></div>
+  </section>
+
+  <p class="defs"><strong>Definitions.</strong> A <em>dial</em> is any outbound call placed on the Hoplite call sequences. A <em>conversation</em> is a call where the rep spoke with a person at the account. A <em>qualified conversation</em> is one where the rep delivered the full pitch and the prospect responded, positively or negatively; a referral counts only when a specific contact is named. New calls are added automatically every two hours during the business day.</p>
+</main>
+
+<script type="module">
+  import { start } from '/portal/portal.js';
+  start({
+    slug: 'hoplite',
+    client: 'Hoplite Consulting',
+    keysUrl: '/hoplite/keys.json',
+    // Encrypted data: the portal-data branch is refreshed every two hours on weekdays.
+    // The copy beside this page is a fallback from the last deploy.
+    dataUrls: [
+      'https://raw.githubusercontent.com/b2bookings/site/portal-data/hoplite/data.enc.json',
+      '/hoplite/data.enc.json',
+    ],
+  });
+</script>
+</body>
+</html>
